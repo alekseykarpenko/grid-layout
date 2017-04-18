@@ -8,40 +8,284 @@
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
+<style>
+	.slide.w img {
+		width: 100%;
+	}
+	.slide.cover {
+		background: #000;
+	}
+	#cover h2 {
+		margin:30px 0 0;
+		color:#FFF;
+		text-align:center;
+		font-size:70px;
+	}
+	#cover p {
+		margin:10px 0 0;
+		text-align:center;
+		color:#FFF;
+		font-style:italic;
+		font-size:20px;
+	}
+	#cover p a {
+		color:#FFF;
+	}
 
-	<header class="caption">
+	.button {
+		padding: 50px 100px 60px;
+		border-radius: 200px;
+		border: 0.1em solid #afafaf;
+		background: linear-gradient(#f7f7f7, #e3e3e3);
+		color: #585a5e;
+		font: inherit;
+	}
+	.pseudo {
+		background: none !important;
+		border-bottom: 0.11em dotted #4e87c0;
+	}
+	.quote {
+		line-height: 1.5;
+		font-size: 60px;
+	}
+	.quote p {
+		margin: 0;
+	}
+	.nemcev {
+		display: inline-block;
+		position: relative;
+		right: -50px;
+		margin-top: 15px;
+		background: url(pictures/nemcev.jpeg) 0 0 no-repeat;
+		position: absolute;
+		right: -250px;
+		top: 100px;
+		width: 282px;
+		height: 282px;
+		-webkit-background-size: 100%;
+		background-size: 100%;
+		border-radius: 50%;
+	}
+
+	h2.title {
+		font-size:72px;
+	}
+	h2.white {
+		color:#FFF;
+	}
+
+	/* Sample */
+
+	.sample {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding: 0 50px 50px 0;
+		counter-reset: list;
+		font: 50px PT Mono, sans-serif;
+	}
+
+	.sample__item {
+		margin: 50px 0 0 50px;
+		background: #0175A7;
+		border-radius: 15px;
+		color: #FFF;
+		display: flex;
+	}
+	.sample__item:first-child {
+		background: #090;
+	}
+	.sample__item:last-child {
+		background: #C00;
+	}
+	.sample__item::before {
+		margin: auto;
+		counter-increment: list;
+		content: counter(list);
+	}
+	.sample--grey .sample__item{
+		background: #8d9aa7;
+	}
+
+	/* Samples */
+
+	.sample {
+		display: grid;
+	}
+	.sample--disabled {
+		display: block;
+	}
+	.sample--two-cols {
+		grid-template-columns: 1fr 1fr;
+	}
+	.sample--three-cols {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.sample--three-cols-asc {
+		grid-template-columns: 1fr 2fr 3fr;
+	}
+	.sample--three-cols-fixed {
+		grid-template-columns: 200px 1fr 200px;
+	}
+	.sample--three-cols-rows {
+		grid-template-rows: 150px 1fr 150px;
+		grid-template-columns: 150px 1fr 150px;
+	}
+
+	/* Manual */
+
+	.sample--manual {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.sample--manual-header-footer :nth-child(1) {
+		grid-column: 1 / 4;
+	}
+	.sample--manual-header-footer :nth-child(5) {
+		grid-column: 1 / 4;
+	}
+	.sample--manual-footer-header :nth-child(1) {
+		grid-row: 3 / 4;
+		grid-column: 1 / 4;
+	}
+	.sample--manual-footer-header :nth-child(5) {
+		grid-row: 1 / 2;
+		grid-column: 1 / 4;
+	}
+</style>
+
+	<!--<header class="caption">
 		<h1>Shower Presentation Engine</h1>
 		<p>Yours Truly, Famous Inc.</p>
-	</header>
+	</header>-->
 
-	<section class="slide" id="cover">
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
+	<section class="slide white" id="cover">
+		<span class="place">
+			<h2 class="title">Grid Layout: <br>Пора внедрять!</h2>
+			<p>by Aleksey 'leshkinkot' Karpenko</a></p>
+		</span>
 		<figure>
-			<img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-			<figcaption class="white">
-				<a href="http://fiftyfootshadows.net/">© John Carey</a>
-			</figcaption>
+			<img class="cover" src="pictures/grid-wallpaper.jpeg" alt="">
 		</figure>
-		<style>
-			#cover h2 {
-				margin:30px 0 0;
-				color:#FFF;
-				text-align:center;
-				font-size:70px;
-				}
-			#cover p {
-				margin:10px 0 0;
-				text-align:center;
-				color:#FFF;
-				font-style:italic;
-				font-size:20px;
-				}
-				#cover p a {
-					color:#FFF;
-					}
-		</style>
 	</section>
+
+	<section class="slide cover white">
+		<figure>
+			<img class="cover" src="pictures/grid-system.jpeg" alt="">
+		</figure>
+	</section>
+
+	<section class="slide white">
+		<div class="sample sample--grey sample--three-cols-rows sample--manual-header-footer">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Template Layout: hacks or &hellip;?</h2>
+		<ol>
+			<li class="next">Tables</li>
+			<li class="next">Floats</li>
+			<li class="next">Flexbox</li>
+			<li class="next"><a href="https://www.w3.org/TR/2005/WD-css3-layout-20051215/">Template layout</a></li>
+			<li class="next">&hellip;</li>
+		</ol>
+	</section>
+
+	<section class="slide">
+		<span class="place">
+			<blockquote class="quote">
+				<p>
+					<a href="https://www.youtube.com/watch?v=VoA-aQu75Xk">Вы <b>не знаете</b> CSS</a>
+				</p>
+			</blockquote>
+			<p class="note next" style="margin-top:50px;">&copy; <a href="https://twitter.com/SilentImp">Антон 'Тихий Бес' Немцев</a></p>
+			<span class="nemcev next">
+
+			</span>
+		</span>
+	</section>
+
+	<section class="slide">
+		<span class="place">
+			<h2 class="title">
+				CSS Working Group Editor Drafts
+			</h2>
+			<p class="note"><a href="https://drafts.csswg.org">https://drafts.csswg.org</a></p>
+		</span>
+	</section>
+
+	<section class="slide white">
+		<figure>
+			<img class="cover" src="pictures/css-working-group-drafts.png" alt="">
+		</figure>
+	</section>
+
+	<section class="slide">
+		<span class="place">
+			<h2 class="title">
+				CSS Working Group
+			</h2>
+			<p class="note"><a href="https://www.w3.org/Style/CSS/current-work">https://www.w3.org/Style/CSS/current-work</a></p>
+			<img class="" width="350px" src="pictures/css-working-group-agenda.png" alt="">
+
+		</span>
+	</section>
+
+	<section class="slide white">
+		<figure>
+			<img class="cover" src="pictures/css-working-group.png" alt="">
+		</figure>
+	</section>
+
+	<section class="slide w white cover">
+			<span class="place"><h2 class="white">
+				Бежать впереди паровоза?
+			</h2></span>
+		<figure>
+			<img class="cover" src="pictures/train.gif" alt="">
+		</figure>
+	</section>
+
+	<section class="slide white">
+		<figure>
+			<img class="cover" src="pictures/grid-layout-module.png" alt="">
+		</figure>
+	</section>
+
+	<section class="slide cover white">
+		<figure>
+			<img class="cover" src="pictures/caniuse.png" alt="">
+		</figure>
+	</section>
+
+	<section class="slide">
+		<figure>
+			<img class="cover" src="pictures/browsers.png" alt="">
+		</figure>
+	</section>
+
+	<section class="slide cover white">
+		<figure>
+			<img class="cover" src="pictures/metro.jpeg" alt="">
+		</figure>
+	</section>
+
+	<!--<section class="slide">
+		<span class="place">
+			<h2 class="title">
+				CSS Grid Layout Examples
+			</h2>
+			<p class="note"><a href="https://igalia.github.io/css-grid-layout/">https://igalia.github.io/css-grid-layout/</a></p>
+		</span>
+	</section>-->
+
+
 
 	<section class="slide">
 		<h2>Shower key features</h2>
